@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Career Advisor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#" onclick="showSection('home')">
+                <i class="bi bi-compass me-2"></i>Career Adviser
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" id="nav-login">
+                        <a class="nav-link" href="#" onclick="showSection('login')">Login</a>
+                    </li>
+                    <li class="nav-item" id="nav-register">
+                        <a class="nav-link" href="#" onclick="showSection('register')">Register</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-dashboard">
+                        <a class="nav-link" href="#" onclick="showSection('dashboard')">Dashboard</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-careers">
+                        <a class="nav-link" href="#" onclick="showSection('careers')">Explore Careers</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-resources">
+                        <a class="nav-link" href="#" onclick="showSection('resources')">Resources</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-admin">
+                        <a class="nav-link" href="#" onclick="showSection('admin')">Admin</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-logout">
+                        <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home-section" class="section-content">
+        <div class="hero-section">
+            <div class="container">
+                <div class="row align-items-center min-vh-100 py-5">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-4">Find Your Perfect Career Path</h1>
+                        <p class="lead mb-4">Navigate your future with personalized career guidance, expert recommendations, and comprehensive resources tailored just for you.</p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <button class="btn btn--primary btn--lg" onclick="showSection('register')">
+                                Get Started <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                            <button class="btn btn--outline btn--lg" onclick="showSection('careers')">
+                                Explore Careers
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image">
+                            <div class="card p-4">
+                                <h5 class="card-title">Why Choose Career Compass?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Personalized career recommendations</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Comprehensive career guidance</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Study resources and materials</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Expert insights and advice</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow">
+                        <div class="card__body">
+                            <h3 class="text-center mb-4">Student Login</h3>
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label class="form-label" for="loginEmail">Email Address</label>
+                                    <input type="email" class="form-control" id="loginEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="loginPassword">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                            </form>
+                            <p class="text-center mt-3">
+                                Don't have an account? <a href="#" onclick="showSection('register')" class="text-primary">Register here</a>
+                            </p>
+                            <div class="mt-3 p-3 bg-light rounded">
+                                <small class="text-muted">
+                                    <strong>Demo Accounts:</strong><br>
+                                    Student: student@demo.com / password123<br>
+                                    Admin: admin@demo.com / admin123
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card__body">
+                            <h3 class="text-center mb-4">Student Registration</h3>
+                            <form id="registerForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regName">Full Name</label>
+                                            <input type="text" class="form-control" id="regName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regEmail">Email Address</label>
+                                            <input type="email" class="form-control" id="regEmail" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regPassword">Password</label>
+                                            <input type="password" class="form-control" id="regPassword" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regConfirmPassword">Confirm Password</label>
+                                            <input type="password" class="form-control" id="regConfirmPassword" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regStream">Academic Stream</label>
+                                            <select class="form-control" id="regStream">
+                                                <option value="">Select Stream</option>
+                                                <option value="science">Science</option>
+                                                <option value="commerce">Commerce</option>
+                                                <option value="arts">Arts</option>
+                                                <option value="engineering">Engineering</option>
+                                                <option value="medical">Medical</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regGrade">Current Grade</label>
+                                            <select class="form-control" id="regGrade">
+                                                <option value="">Select Grade</option>
+                                                <option value="10">Class 10</option>
+                                                <option value="11">Class 11</option>
+                                                <option value="12">Class 12</option>
+                                                <option value="ug">Undergraduate</option>
+                                                <option value="pg">Postgraduate</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="regInterests">Interests (Optional)</label>
+                                    <textarea class="form-control" id="regInterests" rows="2" placeholder="Tell us about your interests..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full-width">Register</button>
+                            </form>
+                            <p class="text-center mt-3">
+                                Already have an account? <a href="#" onclick="showSection('login')" class="text-primary">Login here</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h2>Welcome back, <span id="userName">Student</span>!</h2>
+                    <p class="text-muted">Your personalized career guidance dashboard</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body text-center">
+                            <i class="bi bi-clipboard-check display-4 text-primary mb-3"></i>
+                            <h5>Take Career Assessment</h5>
+                            <p class="text-muted">Complete our comprehensive questionnaire to get personalized career recommendations.</p>
+                            <button class="btn btn--primary" onclick="startQuestionnaire()">
+                                Start Assessment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body text-center">
+                            <i class="bi bi-compass display-4 text-success mb-3"></i>
+                            <h5>Explore Careers</h5>
+                            <p class="text-muted">Browse through various career options and learn about different fields.</p>
+                            <button class="btn btn--secondary" onclick="showSection('careers')">
+                                Explore Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body text-center">
+                            <i class="bi bi-book display-4 text-warning mb-3"></i>
+                            <h5>Study Resources</h5>
+                            <p class="text-muted">Access preparation materials, tutorials, and educational resources.</p>
+                            <button class="btn btn--secondary" onclick="showSection('resources')">
+                                View Resources
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4" id="recommendationsRow" style="display: none;">
+                <div class="col-12">
+                    <h4>Your Career Recommendations</h4>
+                    <div id="recommendationCards" class="row"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questionnaire Section -->
+    <section id="questionnaire-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card__body">
+                            <div class="mb-4">
+                                <h3>Career Assessment Questionnaire</h3>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" id="progressBar"></div>
+                                </div>
+                                <small class="text-muted">Question <span id="questionNumber">1</span> of <span id="totalQuestions">7</span></small>
+                            </div>
+                            <div id="questionContainer">
+                                <!-- Questions will be dynamically loaded here -->
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn--secondary" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                                <button class="btn btn--primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2>Your Career Recommendations</h2>
+                    <p class="lead">Based on your responses, here are the careers that match your profile:</p>
+                </div>
+            </div>
+            <div id="resultsContainer" class="row">
+                <!-- Results will be dynamically loaded here -->
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn--primary" onclick="showSection('careers')">Explore All Careers</button>
+                <button class="btn btn--secondary" onclick="showSection('dashboard')">Back to Dashboard</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2>Explore Career Options</h2>
+                    <p class="text-muted">Discover various career paths and find the one that suits you best.</p>
+                </div>
+            </div>
+            
+            <!-- Career Categories -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="btn-group flex-wrap" role="group">
+                        <button type="button" class="btn btn--outline active" onclick="filterCareers('all')">All</button>
+                        <button type="button" class="btn btn--outline" onclick="filterCareers('Technology & IT')">Technology</button>
+                        <button type="button" class="btn btn--outline" onclick="filterCareers('Healthcare & Medicine')">Healthcare</button>
+                        <button type="button" class="btn btn--outline" onclick="filterCareers('Engineering')">Engineering</button>
+                        <button type="button" class="btn btn--outline" onclick="filterCareers('Business & Finance')">Business</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="careersContainer" class="row">
+                <!-- Career cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Detail Modal -->
+    <div class="modal fade" id="careerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="careerModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="careerModalBody">
+                    <!-- Career details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <section id="resources-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2>Study Resources</h2>
+                    <p class="text-muted">Access educational materials, tutorials, and preparation guides.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card__body">
+                            <h5 class="text-primary">Technology Resources</h5>
+                            <div class="resource-item mb-3">
+                                <h6>Programming Fundamentals</h6>
+                                <p class="text-muted mb-2">Learn basic programming concepts and logic building</p>
+                                <a href="https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA" target="_blank" class="btn btn--sm btn--outline">
+                                    <i class="bi bi-youtube"></i> Watch Tutorials
+                                </a>
+                            </div>
+                            <div class="resource-item">
+                                <h6>Data Structures and Algorithms</h6>
+                                <p class="text-muted mb-2">Master DSA concepts for technical interviews</p>
+                                <a href="https://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g" target="_blank" class="btn btn--sm btn--outline">
+                                    <i class="bi bi-youtube"></i> Watch Tutorials
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card__body">
+                            <h5 class="text-success">Healthcare Resources</h5>
+                            <div class="resource-item">
+                                <h6>NEET Preparation Guide</h6>
+                                <p class="text-muted mb-2">Comprehensive guide for medical entrance exams</p>
+                                <a href="https://www.youtube.com/channel/UCpkm6KFjfzNfeuIwvt4lEiw" target="_blank" class="btn btn--sm btn--outline">
+                                    <i class="bi bi-youtube"></i> Watch Tutorials
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Challenges Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>Common Career Challenges & Solutions</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body">
+                            <h6 class="text-warning">Lack of Career Guidance</h6>
+                            <p class="text-muted">Many students don't receive adequate guidance to explore all available career options</p>
+                            <ul class="list-unstyled">
+                                <li><small>• Use career assessment tools</small></li>
+                                <li><small>• Talk to professionals</small></li>
+                                <li><small>• Research thoroughly</small></li>
+                                <li><small>• Seek mentorship</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body">
+                            <h6 class="text-danger">Skills Mismatch</h6>
+                            <p class="text-muted">Academic qualifications don't always match employer expectations</p>
+                            <ul class="list-unstyled">
+                                <li><small>• Focus on practical skills</small></li>
+                                <li><small>• Gain relevant experience</small></li>
+                                <li><small>• Take online courses</small></li>
+                                <li><small>• Build a portfolio</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card__body">
+                            <h6 class="text-info">Competition and Market Volatility</h6>
+                            <p class="text-muted">High competition and changing job market create uncertainty</p>
+                            <ul class="list-unstyled">
+                                <li><small>• Develop multiple skills</small></li>
+                                <li><small>• Stay updated with trends</small></li>
+                                <li><small>• Network actively</small></li>
+                                <li><small>• Be adaptable</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin-section" class="section-content d-none">
+        <div class="container py-5">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2>Admin Panel</h2>
+                    <p class="text-muted">Manage careers, questions, and view statistics.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card__body">
+                            <i class="bi bi-people display-4 text-primary mb-3"></i>
+                            <h5>User Statistics</h5>
+                            <p class="display-6" id="userCount">0</p>
+                            <small class="text-muted">Total Registered Users</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card__body">
+                            <i class="bi bi-clipboard-data display-4 text-success mb-3"></i>
+                            <h5>Assessments Taken</h5>
+                            <p class="display-6" id="assessmentCount">0</p>
+                            <small class="text-muted">Career Assessments Completed</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card__body">
+                            <i class="bi bi-briefcase display-4 text-warning mb-3"></i>
+                            <h5>Career Options</h5>
+                            <p class="display-6" id="careerCount">0</p>
+                            <small class="text-muted">Available Career Paths</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card__body">
+                            <h5>Quick Actions</h5>
+                            <button class="btn btn--primary me-2" onclick="exportData()">Export Data</button>
+                            <button class="btn btn--secondary me-2" onclick="viewUserResponses()">View Responses</button>
+                            <button class="btn btn--outline" onclick="generateReport()">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
